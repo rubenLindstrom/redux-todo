@@ -2,11 +2,11 @@
 
 import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER } from "./types";
 
-export const add_todo = text => {
+export const addTodo = text => {
   type: ADD_TODO, text;
 };
 
-export const toggle_todo = index => {
+export const toggleTodo = index => {
   type: TOGGLE_TODO, index;
 };
 
