@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Todo from "./Todo";
 
-export default function TodoList({ todos, onTodoClick }) {
+const TodoList = ({ todos, onTodoClick }) => {
   return (
     <ul>
-      {todos.map((todo, index) => {
-        <Todo key={index} {...todo} onClick={() => onTodoClick(index)} />;
-      })}
+      {todos.map((todo, index) => (
+        <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
+      ))}
     </ul>
   );
-}
+};
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(
@@ -19,7 +20,7 @@ TodoList.propTypes = {
       text: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  ontodoClick: PropTypes.func.isRequired
+  onTodoClick: PropTypes.func.isRequired
 };
 
 export default TodoList;

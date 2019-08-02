@@ -1,20 +1,21 @@
-import React from 'react';
+import React from "react";
 
 import FilterLink from "../containers/FilterLink";
 import { VisibilityFilters } from "../constants";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <p>
-      Show: 
+      {"Show: "}
       <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
       {", "}
       <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>Active</FilterLink>
       {", "}
-      <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>Completed</FilterLink>
-
+      <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
+        Completed
+      </FilterLink>
     </p>
   );
-}
+};
 
 export default Footer;

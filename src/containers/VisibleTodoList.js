@@ -2,39 +2,40 @@
 
 // Denna komponent har exempelvis ingen JSX. Dess enda syfte är att förse TodoList med rätt props.
 
-import { connect } from "redux";
+import { connect } from "react-redux";
 import { toggleTodo } from "../actions";
 import TodoList from "../components/TodoList";
 
+import { VisibilityFilters } from "../constants";
+
 const getVisibleTodos = (todos, filter) => {
-  switch(filter) {
-    case "SHOW_ALL":  
+  switch (filter) {
+    case VisibilityFilters.SHOW_ALL:
       return todos;
-    case "SHOW_COMPLETED":
+    case VisibilityFilters.SHOW_COMPLETED:
       return todos.filter(t => t.completed);
-    case "SHOW_ACTIVE":
+    case VisibilityFilters.SHOW_ACTIVE:
       return todos.filter(t => !t.completed);
+    default:
+      return;
   }
-}
+};
 
 const mapStateToProps = state => {
   return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter);
-  }
-}
+    todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  };
+};
 
-mapDispatchToProps = dispatch => {
-  return {
-    onTodoClick: id => {
-      dispatch(toggleTodo(id));
-    }
+const mapDispatchToProps = dispatch => ({
+  onTodoClick: id => {
+    dispatch(toggleTodo(id));
   }
-}
+});
 
 const VisibleTodoList = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ToDoList);
+)(TodoList);
 
 export default VisibleTodoList;
-
