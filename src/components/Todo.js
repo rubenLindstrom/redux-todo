@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default const Todo = () => {
+export default const Todo = ({ onClick, completed, text }) => {
   return (
     <li
       onClick={onClick}
